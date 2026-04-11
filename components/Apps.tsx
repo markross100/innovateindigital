@@ -3,10 +3,10 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const badges = [
-  'Automation Manager',
-  'Agentic Workflows',
-  'AI Process Tools',
-  'More Coming',
+  { label: 'Automation Manager', href: 'https://app.innovateindigital.com' },
+  { label: 'Agentic Workflows',   href: null },
+  { label: 'AI Process Tools',    href: null },
+  { label: 'More Coming',         href: null },
 ]
 
 export default function Apps() {
@@ -35,7 +35,7 @@ export default function Apps() {
             text-yellow bg-yellow/[0.07] border border-yellow/[0.18]
             rounded-[2px] px-3 py-[0.28rem]
           ">
-            Coming Soon
+            Live — Try it Free
           </span>
 
           {/* Glow */}
@@ -63,18 +63,37 @@ export default function Apps() {
             </p>
 
             <div className="flex flex-wrap gap-3 mt-6">
-              {badges.map((b) => (
-                <span
-                  key={b}
-                  className="
-                    px-4 py-[0.38rem] text-[0.76rem] text-muted
-                    tracking-[0.04em] border border-gold/[0.22]
-                    bg-gold/[0.06] rounded-[2px]
-                  "
-                >
-                  {b}
-                </span>
-              ))}
+              {badges.map(({ label, href }) =>
+                href ? (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      px-4 py-[0.38rem] text-[0.76rem] text-gold
+                      tracking-[0.04em] border border-gold/[0.5]
+                      bg-gold/[0.08] rounded-[2px]
+                      hover:bg-gold/[0.15] hover:border-gold
+                      transition-all duration-200 no-underline
+                      inline-flex items-center gap-1
+                    "
+                  >
+                    {label} ↗
+                  </a>
+                ) : (
+                  <span
+                    key={label}
+                    className="
+                      px-4 py-[0.38rem] text-[0.76rem] text-muted
+                      tracking-[0.04em] border border-gold/[0.22]
+                      bg-gold/[0.06] rounded-[2px]
+                    "
+                  >
+                    {label}
+                  </span>
+                )
+              )}
             </div>
 
             <div className="mt-8">
