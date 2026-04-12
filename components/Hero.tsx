@@ -19,7 +19,7 @@ export default function Hero() {
   ]
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-36 pb-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-36 pb-32 overflow-hidden">
       <div className="hero-grid-bg" />
       <div className="hero-glow" />
 
@@ -53,22 +53,18 @@ export default function Hero() {
         </motion.p>
 
         <motion.div className="flex gap-4 flex-wrap" {...fade(0.65)}>
-          <a
-            href="mailto:mark.ross@innovateindigital.com"
-            className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-gold text-bg border border-gold hover:bg-gold-l hover:border-gold-l transition-all duration-200 no-underline"
-          >
+          <a href="mailto:mark.ross@innovateindigital.com"
+            className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-gold text-bg border border-gold hover:bg-gold-l hover:border-gold-l transition-all duration-200 no-underline">
             {t('ctaPrimary')}
           </a>
-          <a
-            href="#community"
-            className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-transparent text-ink border border-gold/[0.22] hover:bg-gold/[0.07] hover:border-gold hover:text-gold transition-all duration-200 no-underline"
-          >
+          <a href="#community"
+            className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-transparent text-ink border border-gold/[0.22] hover:bg-gold/[0.07] hover:border-gold hover:text-gold transition-all duration-200 no-underline">
             {t('ctaSecondary')} ↓
           </a>
         </motion.div>
 
         <motion.div
-          className="mt-[4.5rem] pt-10 border-t border-white/[0.06] flex gap-14 flex-wrap"
+          className="mt-[4.5rem] pt-10 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-8"
           {...fade(0.85)}
         >
           {stats.map(({ num, label }) => (
@@ -79,21 +75,11 @@ export default function Hero() {
                   {num.includes('+') ? '+' : num.includes('%') ? '%' : ''}
                 </span>
               </div>
-              <div className="text-muted text-[0.8rem] mt-1">{label}</div>
+              <div className="text-muted text-[0.8rem] mt-2 leading-snug">{label}</div>
             </div>
           ))}
         </motion.div>
       </div>
-
-      <motion.div
-        className="absolute bottom-10 left-[5vw] flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-      >
-        <span className="text-muted text-[0.62rem] tracking-[0.2em] uppercase">{t('scroll')}</span>
-        <span className="scroll-line-anim" />
-      </motion.div>
     </section>
   )
 }
