@@ -8,7 +8,8 @@ export default function Apps() {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
 
-  const badges = [
+const badges = [
+    { label: t('badge0'), href: 'https://readiness.innovateindigital.com' },
     { label: t('badge1'), href: 'https://app.innovateindigital.com' },
     { label: t('badge2'), href: null },
     { label: t('badge3'), href: null },
