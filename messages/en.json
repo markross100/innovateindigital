@@ -101,15 +101,9 @@
   },
   "apps": {
     "label": "Agentic AI Applications",
-    "liveTag": "Live — Try it Free",
     "headline1": "A Suite of Tools",
     "headline2": "Built for Automation Leaders.",
-    "sub": "Beyond events, InnovateInDigital is developing a curated suite of Agentic AI applications — practical tools designed for the professionals in the room. Starting with Automation Manager.",
-    "badge0": "Automation Readiness",
-    "badge1": "Automation Manager",
-    "badge2": "Agentic Workflows",
-    "badge3": "AI Process Tools",
-    "badge4": "More Coming",
+    "sub": "A curated suite of Agentic AI applications — practical tools designed for the professionals in the room. Structured access ensures quality and relevance.",
     "cta": "Express Early Interest",
     "aiLabel": "Powered",
     "agenticLabel": "Native"
