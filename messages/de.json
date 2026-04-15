@@ -101,15 +101,9 @@
   },
   "apps": {
     "label": "Agentische KI-Anwendungen",
-    "liveTag": "Live — Kostenlos testen",
     "headline1": "Eine Suite von Tools",
     "headline2": "für Automatisierungsleiter.",
-    "sub": "Über Events hinaus entwickelt InnovateInDigital eine kuratierte Suite agentischer KI-Anwendungen — praktische Tools für die Fachleute im Raum. Beginnend mit dem Automation Manager.",
-    "badge0": "Automatisierungsbereitschaft",
-    "badge1": "Automation Manager",
-    "badge2": "Agentische Workflows",
-    "badge3": "KI-Prozess-Tools",
-    "badge4": "Mehr folgt",
+    "sub": "Eine kuratierte Suite agentischer KI-Anwendungen — praktische Tools für die Fachleute im Raum. Strukturierter Zugang gewährleistet Qualität und Relevanz.",
     "cta": "Frühzeitiges Interesse bekunden",
     "aiLabel": "Betrieben",
     "agenticLabel": "Nativ"
