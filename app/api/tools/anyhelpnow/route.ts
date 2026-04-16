@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: `Received: "${code}"` }, { status: 401 })
   }
   try {
-    const html = readFileSync(join(process.cwd(), 'lib/tools/anyhelpnow.html'), 'utf-8')
+    const html = readFileSync(join(process.cwd(), 'public/tools/anyhelpnow.html'), 'utf-8')
     return NextResponse.json({ html })
   } catch (e) {
     return NextResponse.json({ error: `File error: ${String(e)}` }, { status: 500 })
