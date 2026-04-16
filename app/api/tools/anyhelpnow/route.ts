@@ -16,11 +16,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: `Received: "${code}"` }, { status: 401 })
   }
 
-  try {
-    const response = await fetch('https://innovateindigital.com/tools/anyhelpnow.html')
-    const html = await response.text()
-    return NextResponse.json({ html })
-  } catch (e) {
-    return NextResponse.json({ error: `Fetch error: ${String(e)}` }, { status: 500 })
-  }
+  return NextResponse.json({ success: true })
 }
