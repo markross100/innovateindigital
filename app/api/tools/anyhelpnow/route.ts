@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync } from 'fs'
-import { join } from 'path'
 
 const ACCESS_CODE = 'AHN2026'
 
@@ -13,13 +11,16 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: 'Could not parse request' }, { status: 400 })
   }
+
   if (code !== ACCESS_CODE) {
     return NextResponse.json({ error: `Received: "${code}"` }, { status: 401 })
   }
+
   try {
-    const html = readFileSync(join(process.cwd(), 'public/tools/anyhelpnow.html'), 'utf-8')
+    const response = await fetch('https://innovateindigital.com/tools/anyhelpnow.html')
+    const html = await response.text()
     return NextResponse.json({ html })
   } catch (e) {
-    return NextResponse.json({ error: `File error: ${String(e)}` }, { status: 500 })
+    return NextResponse.json({ error: `Fetch error: ${String(e)}` }, { status: 500 })
   }
 }
