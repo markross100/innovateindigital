@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { anyhelpnowHtml } from '@/lib/tools/anyhelpnow'
+// @ts-ignore
+import { anyhelpnowHtml } from '@/lib/tools/anyhelpnow.js'
 
 const ACCESS_CODE = 'AHN2026'
 
