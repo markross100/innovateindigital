@@ -1,3 +1,4 @@
+export const anyhelpnowHtml =
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -804,3 +805,4 @@ window.addEventListener('load', checkSavedSession);
 </script>
 </body>
 </html>
+\
