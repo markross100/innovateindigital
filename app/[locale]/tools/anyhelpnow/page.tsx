@@ -2,10 +2,9 @@
 import { useState } from 'react'
 
 export default function AnyHelpNowPage() {
-  const [unlocked, setUnlocked] = useState(false)
-  const [code, setCode]         = useState('')
-  const [error, setError]       = useState('')
-  const [loading, setLoading]   = useState(false)
+  const [code, setCode]     = useState('')
+  const [error, setError]   = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async () => {
     setLoading(true)
@@ -22,21 +21,11 @@ export default function AnyHelpNowPage() {
         setLoading(false)
         return
       }
-      setUnlocked(true)
+      window.location.href = '/tools/anyhelpnow.html'
     } catch {
       setError('Something went wrong. Please try again.')
+      setLoading(false)
     }
-    setLoading(false)
-  }
-
-  if (unlocked) {
-    return (
-      <iframe
-        src="/tools/anyhelpnow.html"
-        style={{ width: '100%', height: '100vh', border: 'none', display: 'block' }}
-        title="AnyHelpNow"
-      />
-    )
   }
 
   return (
@@ -68,9 +57,7 @@ export default function AnyHelpNowPage() {
               placeholder="Enter access code"
               style={{ width: '100%', padding: '0.75rem 1rem', background: '#141420', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '2px', color: '#EDE9E0', fontSize: '0.9rem', outline: 'none', boxSizing: 'border-box' }}
             />
-            {error && (
-              <p style={{ fontSize: '0.8rem', color: '#f87171', margin: 0 }}>{error}</p>
-            )}
+            {error && <p style={{ fontSize: '0.8rem', color: '#f87171', margin: 0 }}>{error}</p>}
             <button
               onClick={handleSubmit}
               disabled={loading || !code}
