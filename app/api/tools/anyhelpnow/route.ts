@@ -8,8 +8,9 @@ export async function POST(req: NextRequest) {
   try {
     const { code } = await req.json()
 
-    if (code !== ACCESS_CODE) {
-      return NextResponse.json({ error: 'Invalid access code' }, { status: 401 })
+ if (code !== ACCESS_CODE) {
+  return NextResponse.json({ error: `Got: "${code}" Expected: "${ACCESS_CODE}"` }, { status: 401 })
+}
     }
 
     try {
