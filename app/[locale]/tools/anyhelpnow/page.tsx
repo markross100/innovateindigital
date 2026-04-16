@@ -38,8 +38,6 @@ if (!res.ok) {
         title="AnyHelpNow"
       />
     )
-      />
-    )
   }
 
   return (
