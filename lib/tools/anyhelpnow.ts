@@ -1,4 +1,4 @@
-export const anyhelpnowHtml = `
+export const anyhelpnowHtml = String.raw`
 <!DOCTYPE html>
 <html lang="de">
 <head>
