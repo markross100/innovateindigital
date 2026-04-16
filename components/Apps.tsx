@@ -14,11 +14,11 @@ export default function Apps() {
   ]
 
   const liveCode = [
-    { label: 'M3  Automation Manager', href: 'https://app.innovateindigital.com' },
+    { label: 'M3  Automation Manager',          href: 'https://app.innovateindigital.com' },
+    { label: 'M4  Process Prioritisation Matrix', href: 'https://priority.innovateindigital.com' },
   ]
 
   const coming = [
-    'M4  Process Prioritisation Matrix',
     'M5  Vendor Selector',
     'M6  Automation ROI Tracker',
     'M7  Automation Health Check',
