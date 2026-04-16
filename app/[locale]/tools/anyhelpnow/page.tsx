@@ -16,10 +16,11 @@ export default function AnyHelpNowPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code.trim().toUpperCase() }),
       })
-      if (!res.ok) {
-        setError('Invalid access code. Please try again.')
-        setLoading(false)
-        return
+if (!res.ok) {
+  const errData = await res.json()
+  setError(errData.error || 'Invalid access code. Please try again.')
+  setLoading(false)
+  return
       }
       const data = await res.json()
       setHtml(data.html)
