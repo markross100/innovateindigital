@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-// @ts-ignore
-import { anyhelpnowHtml } from '@/lib/tools/anyhelpnow.js'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
 const ACCESS_CODE = 'AHN2026'
 
@@ -11,5 +11,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid access code' }, { status: 401 })
   }
 
-  return NextResponse.json({ html: anyhelpnowHtml })
+  const html = readFileSync(join(process.cwd(), 'lib/tools/anyhelpnow.html'), 'utf-8')
+  return NextResponse.json({ html })
 }
