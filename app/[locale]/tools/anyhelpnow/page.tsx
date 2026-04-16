@@ -36,7 +36,8 @@ if (!res.ok) {
         srcDoc={html}
         style={{ width: '100%', height: '100vh', border: 'none', display: 'block' }}
         title="AnyHelpNow"
-        sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation"
+      />
+    )
       />
     )
   }
