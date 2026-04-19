@@ -13,14 +13,16 @@ export default function Apps() {
     { label: 'Process Cost Calculator', href: 'https://costs.innovateindigital.com' },
   ]
 
-  const liveCode = [
-    { label: 'Automation Manager',          href: 'https://app.innovateindigital.com' },
-    { label: 'Process Prioritisation Matrix', href: 'https://priority.innovateindigital.com' },
-    { label: 'Vendor Selector',             href: 'https://vendor.innovateindigital.com' },
+    const liveCode = [
+    { label: 'Automation Manager',             href: 'https://app.innovateindigital.com' },
+    { label: 'Process Prioritisation Matrix',  href: 'https://priority.innovateindigital.com' },
+    { label: 'Vendor Selector',                href: 'https://vendor.innovateindigital.com' },
+    { label: 'Business Case Builder',          href: 'https://businesscase.innovateindigital.com' },
   ]
 
   const coming = [
-    'Automation ROI Tracker',
+    'AI Agent Design Canvas',
+    'Automation Maturity Assessment',
     'Automation Health Check',
   ]
 
