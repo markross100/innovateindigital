@@ -9,20 +9,21 @@ export default function Apps() {
   const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
 
   const liveEmail = [
-    { label: 'M1  AI Readiness Scorecard',  href: 'https://readiness.innovateindigital.com' },
-    { label: 'M2  Process Cost Calculator', href: 'https://costs.innovateindigital.com' },
+    { label: 'AI Readiness Scorecard',  href: 'https://readiness.innovateindigital.com' },
+    { label: 'Process Cost Calculator', href: 'https://costs.innovateindigital.com' },
   ]
 
   const liveCode = [
-    { label: 'M3  Automation Manager',          href: 'https://app.innovateindigital.com' },
-    { label: 'M4  Process Prioritisation Matrix', href: 'https://priority.innovateindigital.com' },
+    { label: 'Automation Manager',          href: 'https://app.innovateindigital.com' },
+    { label: 'Process Prioritisation Matrix', href: 'https://priority.innovateindigital.com' },
+    { label: 'Vendor Selector',             href: 'https://vendor.innovateindigital.com' },
   ]
 
   const coming = [
-    'M5  Vendor Selector',
-    'M6  Automation ROI Tracker',
-    'M7  Automation Health Check',
+    'Automation ROI Tracker',
+    'Automation Health Check',
   ]
+
 
   return (
     <section id="apps" className="py-28 bg-bg2">
