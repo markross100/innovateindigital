@@ -15,7 +15,7 @@ export default function Nav() {
   }, [])
 
   const links = [
-    { href: '#community', label: t('events') },
+    { href: '#format',    label: t('events') },
     { href: '#audience',  label: t('whoAttends') },
     { href: '#mark',      label: t('aboutMark') },
     { href: '#sponsors',  label: t('sponsors') },
@@ -40,20 +40,19 @@ export default function Nav() {
 
       <div className="flex items-center gap-3">
         <div className="hidden md:flex items-center border border-white/[0.1] rounded-[2px] overflow-hidden">
-          <Link
-            href="/en"
-            className={`px-3 py-[0.4rem] text-[0.72rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200 no-underline ${locale === 'en' ? 'bg-gold text-bg' : 'text-muted hover:text-ink'}`}
-          >
-            EN
-          </Link>
-          <Link
-            href="/de"
-            className={`px-3 py-[0.4rem] text-[0.72rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200 no-underline ${locale === 'de' ? 'bg-gold text-bg' : 'text-muted hover:text-ink'}`}
-          >
-            DE
-          </Link>
+          {(['en', 'de'] as const).map((lang) => (
+            <Link key={lang} href={lang === 'en' ? '/' : '/de'}
+              className={`px-3 py-[0.4rem] text-[0.72rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200 no-underline ${locale === lang ? 'bg-gold text-bg' : 'text-muted hover:text-ink'}`}>
+              {lang.toUpperCase()}
+            </Link>
+          ))}
         </div>
-        <a href="mailto:mark.ross@innovateindigital.com" className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-gold text-bg border border-gold hover:bg-gold-l hover:border-gold-l transition-all duration-200 no-underline">
+        <a href="mailto:mark.ross@innovateindigital.com?subject=Sponsor Information Pack Request"
+          className="hidden md:inline-flex items-center gap-2 px-[1.2rem] py-[0.6rem] rounded-[2px] text-[0.75rem] font-semibold tracking-[0.08em] uppercase bg-transparent text-muted border border-white/[0.12] hover:border-gold/[0.4] hover:text-gold transition-all duration-200 no-underline">
+          {t('sponsorEnquiry')}
+        </a>
+        <a href="mailto:mark.ross@innovateindigital.com"
+          className="inline-flex items-center gap-2 px-[1.6rem] py-[0.68rem] rounded-[2px] text-[0.8rem] font-semibold tracking-[0.1em] uppercase bg-gold text-bg border border-gold hover:bg-gold-l hover:border-gold-l transition-all duration-200 no-underline">
           {t('requestInvite')}
         </a>
       </div>
