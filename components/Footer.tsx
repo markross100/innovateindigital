@@ -11,7 +11,8 @@ export default function Footer() {
     { href: '#mark',                                        label: t('about') },
     { href: '#sponsors',                                    label: t('sponsors') },
     { href: 'https://www.linkedin.com/in/markrossch/',      label: t('linkedin'), external: true },
-    { href: 'mailto:mark.ross@innovateindigital.com',       label: t('contact') },
+    { href: 'mailto:mark.ross@innovateindigital.com', label: t('contact') },
+    { href: '/privacy',                                label: t('privacy') },
   ]
 
   return (
