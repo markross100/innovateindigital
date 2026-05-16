@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:     #08080F;
-  --card:   #0F0F1A;
-  --border: #1C1C2E;
-  --gold:   #C9A84C;
+  --bg:      #08080F;
+  --card:    #0F0F1A;
+  --border:  #1C1C2E;
+  --gold:    #C9A84C;
   --gold-bg: rgba(201,168,76,0.07);
   --gold-bd: rgba(201,168,76,0.22);
-  --yellow: #E8F000;
-  --text:   #F5F5F0;
-  --muted:  #A0A090;
-  --dim:    #1C1C26;
+  --yellow:  #E8F000;
+  --text:    #F5F5F0;
+  --muted:   #A0A090;
+  --dim:     #1C1C26;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -203,37 +203,6 @@ header {
   font-weight: 600;
 }
 
-/* Data table */
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-
-.data-table th {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 9px 14px;
-  text-align: left;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.data-table td {
-  border: 1px solid var(--border);
-  padding: 10px 14px;
-  color: var(--muted);
-  vertical-align: top;
-  line-height: 1.6;
-}
-
-.data-table td:first-child { color: var(--text); font-weight: 500; }
-.data-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
-
 /* Highlight box */
 .hl-box {
   background: var(--gold-bg);
@@ -248,8 +217,8 @@ header {
 
 .hl-box strong { color: var(--text); }
 
-/* Rights list */
-.rights-list {
+/* Privacy positive pill */
+.positive-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -257,16 +226,16 @@ header {
   margin-bottom: 16px;
 }
 
-.rights-list li {
+.positive-list li {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.65;
 }
 
-.right-icon {
+.pill-icon {
   width: 20px;
   height: 20px;
   background: var(--gold-bg);
@@ -280,7 +249,7 @@ header {
   color: var(--gold);
 }
 
-.rights-list li strong { color: var(--text); }
+.positive-list li strong { color: var(--text); }
 
 /* Divider */
 .divider {
@@ -365,143 +334,108 @@ footer {
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-tag">Legal</div>
+    <div class="hero-tag">Personal Site</div>
     <h1>Privacy Notice</h1>
-    <p class="hero-sub">We believe in plain language. This notice explains what data we collect, why we collect it, and what rights you have — without the usual wall of legal boilerplate.</p>
+    <p class="hero-sub">This is a personal website run by Mark Ross. It is not a business or registered entity. This notice explains what little data this site touches — and what it does not.</p>
     <div class="hero-meta">
       <div class="meta-item">
-        <span class="meta-lbl">Governing Law</span>
-        <span class="meta-val">Swiss nFADP + EU GDPR</span>
+        <span class="meta-lbl">Site Type</span>
+        <span class="meta-val">Personal project</span>
       </div>
       <div class="meta-item">
         <span class="meta-lbl">Last Updated</span>
-        <span class="meta-val">April 2025</span>
+        <span class="meta-val">May 2026</span>
       </div>
       <div class="meta-item">
-        <span class="meta-lbl">Controller</span>
-        <span class="meta-val">Mark Ross — InnovateInDigital</span>
+        <span class="meta-lbl">Run by</span>
+        <span class="meta-val">Mark Ross, Zurich</span>
       </div>
     </div>
   </div>
 
-  <!-- 1. Who we are -->
+  <!-- 1. What this site is -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">1</div>
-      <h2 class="section-title">Who is responsible for your data</h2>
+      <h2 class="section-title">What this site is</h2>
     </div>
     <div class="section-body">
-      <p>The data controller for all personal data processed through this website and its associated tools is:</p>
+      <p>InnovateInDigital is a personal website. It is a landing page for a private roundtable event series and a showcase for personal AI tool projects. It is not operated by a registered business, does not generate revenue, and does not have employees.</p>
+      <p>It is run personally by:</p>
       <div class="hl-box">
-        <strong>Mark Ross — InnovateInDigital</strong><br>
-        Olten, Switzerland<br>
-        <a href="mailto:mark.ross@innovateindigital.com" style="color:var(--gold);text-decoration:none">mark.ross@innovateindigital.com</a><br>
-        <a href="https://www.linkedin.com/in/markrossch/" style="color:var(--gold);text-decoration:none" target="_blank">linkedin.com/in/markrossch</a>
+        <strong>Mark Ross</strong><br>
+        Zurich, Switzerland<br>
+        <a href="mailto:mark.ross@innovateindigital.com" style="color:var(--gold);text-decoration:none">mark.ross@innovateindigital.com</a>
       </div>
-      <p>InnovateInDigital is operated as a sole trader registered in Switzerland. As a sole trader with no employees and no office open to the public, Swiss law does not require appointment of a Data Protection Officer. You may direct any privacy-related questions directly to the contact above.</p>
     </div>
   </div>
 
-  <!-- 2. What we collect -->
+  <!-- 2. What data this site does NOT collect -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">2</div>
-      <h2 class="section-title">What data we collect and why</h2>
+      <h2 class="section-title">What this site does not do</h2>
     </div>
     <div class="section-body">
-      <p>We collect only what is necessary to provide our services and respond to enquiries. The table below sets out each data type, the reason we collect it, and the legal basis under the Swiss nFADP and EU GDPR.</p>
-
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Why we collect it</th>
-            <th>Legal basis</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Name, work email, organisation</td>
-            <td>Submitted voluntarily via our AI assessment tools (Readiness Scorecard, Process Cost Calculator, Business Case Builder, and others). Used to deliver results and follow up if requested.</td>
-            <td>Legitimate interest / consent</td>
-          </tr>
-          <tr>
-            <td>Roundtable enquiry details</td>
-            <td>Contact information submitted when expressing interest in the InnovateInDigital Roundtable series. Used solely to follow up on that interest.</td>
-            <td>Consent</td>
-          </tr>
-          <tr>
-            <td>Assessment responses</td>
-            <td>Process or organisational information entered into our tools. Sent to an AI model to generate a personalised output. Not linked to your identity and not stored beyond the session.</td>
-            <td>Legitimate interest</td>
-          </tr>
-          <tr>
-            <td>IP address and browser metadata</td>
-            <td>Collected automatically by our hosting provider (Vercel) and form processor (Formspree) as part of standard web infrastructure. We do not use this data for tracking or profiling.</td>
-            <td>Legitimate interest</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>We do <strong>not</strong> use advertising trackers, third-party analytics platforms, or behavioural profiling of any kind. We do not use cookies beyond those strictly necessary for tool functionality (e.g. remembering your language preference).</p>
+      <ul class="positive-list">
+        <li>
+          <div class="pill-icon">✕</div>
+          <div><strong>No tracking or analytics</strong> — there are no analytics scripts, advertising trackers, or behavioural profiling tools of any kind on this site.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✕</div>
+          <div><strong>No cookies</strong> — this site does not set any cookies on your device.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✕</div>
+          <div><strong>No contact forms</strong> — the contact link opens your own email client directly. Nothing is submitted to, captured by, or stored on this site.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✕</div>
+          <div><strong>No data sold or shared</strong> — there is no personal data collected here to share with anyone.</div>
+        </li>
+      </ul>
     </div>
   </div>
 
-  <!-- 3. Third parties -->
+  <!-- 3. The AI tools -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">3</div>
-      <h2 class="section-title">Third-party processors</h2>
+      <h2 class="section-title">The AI tools on this site</h2>
     </div>
     <div class="section-body">
-      <p>We use a small number of trusted third-party services to operate this website. Each processes your data only as necessary for the stated purpose.</p>
-
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Purpose</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Vercel Inc.</td>
-            <td>Website and tool hosting. Processes server logs and IP data as part of standard hosting infrastructure.</td>
-            <td>USA (SCCs applied)</td>
-          </tr>
-          <tr>
-            <td>Formspree Inc.</td>
-            <td>Form submission processing. Receives and forwards contact form data to us by email. Data is not retained beyond delivery.</td>
-            <td>USA (SCCs applied)</td>
-          </tr>
-          <tr>
-            <td>Anthropic PBC</td>
-            <td>AI model provider. Assessment responses (not personal data) are sent to the Claude API to generate tool outputs. Anthropic does not use submitted data to train models.</td>
-            <td>USA (SCCs applied)</td>
-          </tr>
-          <tr>
-            <td>Google Fonts</td>
-            <td>Typography delivery. Your IP address is transmitted to Google servers when the page loads. No personal data is stored by us as a result.</td>
-            <td>USA</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>We do not sell, rent, or share your personal data with any third party for their own purposes. Data transfers to the USA are covered by Standard Contractual Clauses (SCCs) recognised under both Swiss nFADP and EU GDPR.</p>
+      <p>This site showcases a small suite of personal AI tools — including Automation Manager, Process Prioritisation Matrix, and others. These tools are browser-based and designed with privacy in mind:</p>
+      <ul class="positive-list">
+        <li>
+          <div class="pill-icon">✓</div>
+          <div><strong>Data stays on your device</strong> — anything you enter into these tools is stored only in your browser's local storage. It never leaves your device and is never transmitted to or stored on any server run by this site.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✓</div>
+          <div><strong>No personal data required</strong> — the tools are designed to work with process and organisational information, not personal data. Please do not enter information that identifies individuals.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✓</div>
+          <div><strong>AI processing</strong> — to generate outputs, tool inputs are sent to the Claude API, operated by Anthropic PBC. Anthropic does not use submitted data to train its models. See <a href="https://www.anthropic.com/legal/privacy" target="_blank" style="color:var(--gold);text-decoration:none">Anthropic's Privacy Policy</a> for details.</div>
+        </li>
+        <li>
+          <div class="pill-icon">✓</div>
+          <div><strong>Your control</strong> — you can clear all locally stored tool data at any time by clearing your browser's local storage for this site.</div>
+        </li>
+      </ul>
     </div>
   </div>
 
-  <!-- 4. Retention -->
+  <!-- 4. Hosting -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">4</div>
-      <h2 class="section-title">How long we keep your data</h2>
+      <h2 class="section-title">Hosting and infrastructure</h2>
     </div>
     <div class="section-body">
-      <p>We retain contact data (name, email, organisation) submitted through our tools or enquiry forms for up to <strong>24 months</strong> from the date of submission, or until you request deletion — whichever comes first. This period allows us to maintain a record of interactions and respond to follow-up enquiries.</p>
-      <p>Assessment responses entered into our tools are processed in real time to generate your output and are <strong>not stored</strong> by us beyond that session. They are transmitted to Anthropic's API and subject to Anthropic's own data retention policy, which does not include training use.</p>
-      <p>Server and access logs held by Vercel are retained in accordance with Vercel's standard data retention policy (typically 30 days).</p>
+      <p>This site is hosted on <strong>Vercel</strong>. As with any web host, Vercel's servers automatically record standard server logs — including IP addresses and browser metadata — as part of normal infrastructure operation. This data is held by Vercel in accordance with their own privacy policy and is not accessed or used by this site for any purpose.</p>
+      <p>Fonts are loaded from <strong>Google Fonts</strong>, which involves your IP address being transmitted to Google's servers when the page loads. No personal data is stored by this site as a result.</p>
     </div>
   </div>
 
@@ -509,67 +443,11 @@ footer {
   <div class="section">
     <div class="section-header">
       <div class="section-num">5</div>
-      <h2 class="section-title">Your rights</h2>
+      <h2 class="section-title">Questions or concerns</h2>
     </div>
     <div class="section-body">
-      <p>Under the Swiss Federal Act on Data Protection (nFADP) and, where applicable, the EU General Data Protection Regulation (GDPR), you have the following rights regarding your personal data:</p>
-
-      <ul class="rights-list">
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Access</strong> — You may request a copy of the personal data we hold about you.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Rectification</strong> — You may ask us to correct inaccurate or incomplete data.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Erasure</strong> — You may request that we delete your personal data, subject to any legal obligation to retain it.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Restriction</strong> — You may ask us to restrict processing of your data in certain circumstances.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Portability</strong> — Where processing is based on consent or contract, you may request your data in a structured, machine-readable format.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Objection</strong> — You may object to processing based on legitimate interest at any time.</div>
-        </li>
-        <li>
-          <div class="right-icon">→</div>
-          <div><strong>Withdrawal of consent</strong> — Where processing is based on consent, you may withdraw it at any time without affecting the lawfulness of prior processing.</div>
-        </li>
-      </ul>
-
-      <p>To exercise any of these rights, contact us at <a href="mailto:mark.ross@innovateindigital.com" style="color:var(--gold);text-decoration:none">mark.ross@innovateindigital.com</a>. We will respond within <strong>30 days</strong>.</p>
-      <p>If you are located in the EU/EEA and believe we have not handled your data appropriately, you have the right to lodge a complaint with your local supervisory authority. Swiss residents may contact the Federal Data Protection and Information Commissioner (FDPIC) at <a href="https://www.edoeb.admin.ch" style="color:var(--gold);text-decoration:none" target="_blank">edoeb.admin.ch</a>.</p>
-    </div>
-  </div>
-
-  <!-- 6. Security -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">6</div>
-      <h2 class="section-title">Security</h2>
-    </div>
-    <div class="section-body">
-      <p>All data in transit is encrypted via TLS. Access to our tools is protected by access codes. We do not store payment data of any kind — no transactions are processed through this website.</p>
-      <p>While we apply appropriate technical and organisational measures to protect your data, no system is entirely immune to risk. We will notify affected individuals and, where required, the relevant supervisory authority without undue delay in the event of a data breach.</p>
-    </div>
-  </div>
-
-  <!-- 7. Changes -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">7</div>
-      <h2 class="section-title">Changes to this notice</h2>
-    </div>
-    <div class="section-body">
-      <p>We may update this notice as our services evolve or as legal requirements change. The date at the top of this page reflects when it was last revised. For material changes, we will take reasonable steps to inform those who have previously submitted their contact details.</p>
+      <p>Because this site collects no personal data, there is nothing held here to access, correct, or delete. If you have any questions about how this site works or what it touches, feel free to get in touch directly.</p>
+      <p>Swiss residents with broader data protection questions may contact the Federal Data Protection and Information Commissioner (FDPIC) at <a href="https://www.edoeb.admin.ch" style="color:var(--gold);text-decoration:none" target="_blank">edoeb.admin.ch</a>.</p>
     </div>
   </div>
 
@@ -578,8 +456,8 @@ footer {
   <!-- Contact card -->
   <div class="contact-card">
     <div>
-      <h3>Questions about this notice?</h3>
-      <p>Contact Mark Ross directly — we aim to respond within two business days.</p>
+      <h3>Any questions?</h3>
+      <p>Reach Mark directly — happy to answer anything about this site.</p>
     </div>
     <a href="mailto:mark.ross@innovateindigital.com" class="contact-link">Get in touch →</a>
   </div>
@@ -588,8 +466,8 @@ footer {
 
 <!-- Footer -->
 <footer>
-  <span class="footer-text">© 2025 Mark Ross — InnovateInDigital · Olten, Switzerland</span>
-  <span class="footer-text">Governed by Swiss nFADP · <a href="https://www.edoeb.admin.ch" style="color:var(--muted);text-decoration:none" target="_blank">FDPIC</a></span>
+  <span class="footer-text">© 2026 Mark Ross — InnovateInDigital · Zurich, Switzerland</span>
+  <span class="footer-text">Personal site · Not a registered business</span>
 </footer>
 
 </body>
