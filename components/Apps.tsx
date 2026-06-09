@@ -13,19 +13,18 @@ export default function Apps() {
     { label: 'Process Cost Calculator', href: 'https://costs.innovateindigital.com' },
   ]
 
-    const liveCode = [
+  const liveCode = [
     { label: 'Automation Manager',             href: 'https://app.innovateindigital.com' },
     { label: 'Process Prioritisation Matrix',  href: 'https://priority.innovateindigital.com' },
-    { label: 'Vendor Selector',                href: 'https://vendor.innovateindigital.com' },
+    { label: 'Vendor Selector',                href: 'https://vendors.innovateindigital.com' },
     { label: 'Business Case Builder',          href: 'https://businesscase.innovateindigital.com' },
+    { label: 'AI Agent Blueprint',             href: 'https://blueprint.innovateindigital.com' },
+    { label: 'Automation Maturity Assessment', href: 'https://maturity.innovateindigital.com' },
   ]
 
   const coming = [
-    'AI Agent Design Canvas',
-    'Automation Maturity Assessment',
     'Automation Health Check',
   ]
-
 
   return (
     <section id="apps" className="py-28 bg-bg2">
