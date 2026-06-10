@@ -3,7 +3,8 @@ import { Playfair_Display, Outfit } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import './globals.css'
-import ChatWidget from '@/components/ChatWidget'
+import dynamic from 'next/dynamic'
+const ChatWidget = dynamic(() => import('@/components/ChatWidget'), { ssr: false })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
