@@ -56,7 +56,7 @@ export default function ChatWidget() {
     try {
       // Replace with your n8n webhook URL
       const res = await fetch(
-        process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || "https://iid1974.app.n8n.cloud/webhook/chat",
+        "/api/chat",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
