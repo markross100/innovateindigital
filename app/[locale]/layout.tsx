@@ -3,6 +3,7 @@ import { Playfair_Display, Outfit } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import './globals.css'
+import ChatWidget from '@/components/ChatWidget'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -52,9 +53,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${playfair.variable} ${outfit.variable}`}>
       <body className="font-sans antialiased">
-        <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <ChatWidget />
       </body>
     </html>
   )
