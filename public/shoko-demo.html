@@ -664,7 +664,8 @@ async function send(){
     });
     const d=await r.json();
     hideTyping();
-    const reply=d?.output||d?.text||d?.message||d?.response||(Array.isArray(d)&&d[0]?.output)||'Sorry, something went wrong. Please email us at info@shokobrunchbar.com';
+    const raw=d?.output||d?.text||d?.message||d?.response||(Array.isArray(d)&&d[0]?.output)||'Sorry, something went wrong. Please email us at info@shokobrunchbar.com';
+const reply=raw.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\*(.*?)\*/g,'$1').replace(/#{1,6}\s/g,'').replace(/\n+/g,' ');
     addMsg('bot',reply);
   }catch(e){
     hideTyping();
