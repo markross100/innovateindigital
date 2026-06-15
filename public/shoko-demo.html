@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SHOKO Brunch & Bar — Lachen SZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1A0F05;
+  --dark:#2C1A0A;
+  --mid:#7A4F28;
+  --amber:#BF7B2E;
+  --gold:#D4A45A;
+  --pale:#E8C98A;
+  --cream:#F7F1E8;
+  --mist:#F0E9DC;
+  --white:#FDFAF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 56px;
+  background:rgba(26,15,5,0);
+  transition:background 0.4s,padding 0.4s;
+}
+nav.scrolled{background:rgba(26,15,5,0.96);padding:14px 56px;backdrop-filter:blur(12px)}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:600;letter-spacing:0.18em;
+  color:#fff;text-decoration:none;
+}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.75);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--pale)}
+
+/* HERO */
+.hero{
+  position:relative;height:100vh;min-height:600px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://static.wixstatic.com/media/af657f_0491baaf0d9e47bbacdd014300514cd3~mv2.jpg/v1/fit/w_2500,h_1330,al_c/af657f_0491baaf0d9e47bbacdd014300514cd3~mv2.jpg') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,15,5,0.5) 0%,rgba(26,15,5,0.65) 60%,rgba(26,15,5,0.8) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:0 24px}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--pale);margin-bottom:24px;
+  border-bottom:1px solid rgba(212,164,90,0.4);padding-bottom:12px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(5rem,12vw,10rem);
+  font-weight:300;color:#fff;
+  letter-spacing:0.12em;line-height:0.9;
+  margin-bottom:28px;
+}
+.hero-sub{
+  font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);margin-bottom:48px;
+}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  padding:14px 40px;
+  background:var(--amber);color:#fff;
+  font-family:'Jost',sans-serif;font-size:0.72rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background 0.25s;
+}
+.btn-primary:hover{background:var(--gold)}
+.btn-outline{
+  padding:14px 40px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.4);
+  color:rgba(255,255,255,0.85);
+  font-family:'Jost',sans-serif;font-size:0.72rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  transition:border-color 0.25s,color 0.25s;
+}
+.btn-outline:hover{border-color:var(--pale);color:var(--pale)}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-scroll span{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.hero-scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.2);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(0.5);opacity:0.3}}
+
+/* HOURS RIBBON */
+.hours-ribbon{
+  background:var(--dark);
+  padding:0;
+  display:flex;justify-content:center;
+  overflow:hidden;
+}
+.hours-inner{
+  display:flex;
+  width:100%;max-width:1100px;
+}
+.hours-item{
+  flex:1;padding:28px 24px;text-align:center;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.hours-item:last-child{border-right:none}
+.hours-day{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.hours-time{font-size:0.85rem;color:rgba(247,241,232,0.7);font-weight:300}
+
+/* ABOUT */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:1200px;margin:0 auto;
+  padding:100px 48px;gap:80px;align-items:center;
+}
+.about-img-wrap{position:relative}
+.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.about-img-accent{
+  position:absolute;bottom:-24px;right:-24px;
+  width:60%;aspect-ratio:1;
+  object-fit:cover;
+  border:6px solid var(--cream);
+}
+.about-text{}
+.label{
+  display:block;font-size:0.65rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:16px;
+}
+.about-text h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;
+  color:var(--dark);line-height:1.2;
+  margin-bottom:28px;
+}
+.about-text h2 em{font-style:italic;color:var(--amber)}
+.about-text p{
+  font-size:0.92rem;line-height:1.85;color:var(--mid);
+  margin-bottom:18px;font-weight:300;
+}
+.divider{width:48px;height:1px;background:var(--amber);margin:32px 0}
+
+/* MENU */
+.menu-section{
+  background:var(--ink);
+  padding:100px 48px;
+  text-align:center;
+}
+.menu-section .label{color:var(--gold)}
+.menu-section h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:300;color:var(--cream);
+  margin-bottom:12px;
+}
+.menu-section h2 em{font-style:italic;color:var(--gold)}
+.menu-sub{
+  font-size:0.82rem;letter-spacing:0.08em;
+  color:rgba(247,241,232,0.45);margin-bottom:64px;
+}
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;background:rgba(255,255,255,0.06);
+  max-width:1000px;margin:0 auto 48px;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.menu-card{
+  padding:40px 28px;background:var(--ink);
+  text-align:left;
+  transition:background 0.25s;
+}
+.menu-card:hover{background:#2C1A0A}
+.menu-card-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;font-weight:300;
+  color:rgba(212,164,90,0.2);
+  display:block;margin-bottom:16px;line-height:1;
+}
+.menu-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:400;
+  color:var(--gold);margin-bottom:10px;letter-spacing:0.02em;
+}
+.menu-card p{font-size:0.8rem;color:rgba(247,241,232,0.5);line-height:1.7;font-weight:300}
+.menu-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.menu-btn{
+  display:inline-block;padding:14px 36px;
+  border:1px solid rgba(212,164,90,0.4);
+  color:var(--gold);font-size:0.72rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;
+  transition:border-color 0.2s,background 0.2s,color 0.2s;
+}
+.menu-btn:hover{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+
+/* CHAT */
+.chat-section{
+  padding:100px 48px;
+  background:var(--mist);
+}
+.chat-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:80px;align-items:start;
+}
+.chat-intro{}
+.chat-intro .label{color:var(--amber)}
+.chat-intro h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;
+  color:var(--dark);line-height:1.2;
+  margin-bottom:24px;
+}
+.chat-intro h2 em{font-style:italic;color:var(--amber)}
+.chat-intro p{
+  font-size:0.9rem;line-height:1.85;
+  color:var(--mid);font-weight:300;margin-bottom:16px;
+}
+.chat-feature{
+  display:flex;gap:14px;align-items:flex-start;
+  margin-top:28px;padding:20px 0;
+  border-top:1px solid rgba(191,123,46,0.15);
+}
+.chat-feature-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(191,123,46,0.12);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:0.95rem;
+}
+.chat-feature-text h4{
+  font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--dark);margin-bottom:4px;font-weight:500;
+}
+.chat-feature-text p{font-size:0.82rem;color:var(--mid);line-height:1.6;font-weight:300}
+
+/* CHAT WIDGET */
+.chat-widget{
+  background:#fff;
+  box-shadow:0 20px 60px rgba(26,15,5,0.1);
+  display:flex;flex-direction:column;
+  height:560px;
+}
+.chat-bar{
+  background:var(--dark);
+  padding:18px 22px;
+  display:flex;align-items:center;gap:14px;
+  flex-shrink:0;
+}
+.chat-bar-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.chat-bar-name{
+  color:#fff;font-size:0.88rem;font-weight:500;letter-spacing:0.04em;
+}
+.chat-bar-status{
+  font-size:0.7rem;color:rgba(255,255,255,0.5);
+  display:flex;align-items:center;gap:5px;margin-top:2px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:#5cb85c;flex-shrink:0}
+.chat-badge{
+  margin-left:auto;
+  background:rgba(191,123,46,0.2);
+  color:var(--pale);
+  font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;
+  padding:4px 10px;border-radius:2px;
+}
+.chat-msgs{
+  flex:1;overflow-y:auto;
+  padding:20px;
+  display:flex;flex-direction:column;gap:14px;
+  background:#FAFAF7;
+}
+.chat-msgs::-webkit-scrollbar{width:3px}
+.chat-msgs::-webkit-scrollbar-thumb{background:#ddd}
+.msg{display:flex;gap:10px;max-width:88%}
+.msg.bot{align-self:flex-start}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg-av{
+  width:28px;height:28px;border-radius:50%;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;margin-top:2px;
+}
+.msg.bot .msg-av{background:rgba(191,123,46,0.15);color:var(--amber)}
+.msg.user .msg-av{background:var(--dark);color:rgba(255,255,255,0.7)}
+.msg-bub{
+  padding:11px 15px;
+  font-size:0.84rem;line-height:1.6;
+}
+.msg.bot .msg-bub{
+  background:#fff;
+  border:0.5px solid rgba(191,123,46,0.2);
+  color:var(--dark);
+  border-radius:0 10px 10px 10px;
+}
+.msg.user .msg-bub{
+  background:var(--dark);color:var(--cream);
+  border-radius:10px 0 10px 10px;
+}
+.typing-bub{
+  background:#fff;border:0.5px solid rgba(191,123,46,0.2);
+  padding:12px 18px;border-radius:0 10px 10px 10px;
+  display:flex;gap:4px;align-items:center;
+}
+.tdot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--amber);opacity:0.5;
+  animation:tdot 1.2s ease-in-out infinite;
+}
+.tdot:nth-child(2){animation-delay:0.2s}
+.tdot:nth-child(3){animation-delay:0.4s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.chat-chips{
+  padding:10px 16px 6px;
+  display:flex;flex-wrap:wrap;gap:7px;
+  border-top:0.5px solid #eee;background:#fff;
+  flex-shrink:0;
+}
+.chip{
+  padding:6px 14px;
+  border:0.5px solid rgba(191,123,46,0.35);
+  background:none;color:var(--amber);
+  font-family:'Jost',sans-serif;font-size:0.76rem;
+  cursor:pointer;border-radius:20px;
+  transition:background 0.2s,color 0.2s;
+}
+.chip:hover{background:var(--amber);color:#fff}
+.chat-input-row{
+  display:flex;border-top:0.5px solid #eee;
+  background:#fff;flex-shrink:0;
+}
+.chat-inp{
+  flex:1;padding:15px 18px;border:none;outline:none;
+  font-family:'Jost',sans-serif;font-size:0.86rem;
+  color:var(--dark);background:transparent;
+}
+.chat-inp::placeholder{color:#bbb}
+.chat-send{
+  padding:15px 20px;background:none;border:none;
+  color:var(--amber);font-size:1.2rem;cursor:pointer;
+  transition:color 0.2s,background 0.2s;
+}
+.chat-send:hover{background:var(--amber);color:#fff}
+.chat-send:disabled{color:#ddd;cursor:not-allowed;background:none}
+
+/* GALLERY STRIP */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);height:280px}
+.gallery-img{
+  overflow:hidden;
+  filter:brightness(0.85)saturate(0.9);
+  transition:filter 0.4s;
+}
+.gallery-img:hover{filter:brightness(1)saturate(1)}
+.gallery-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s}
+.gallery-img:hover img{transform:scale(1.05)}
+
+/* LOCATION */
+.location{
+  background:var(--dark);padding:80px 48px;text-align:center;
+}
+.location .label{color:var(--gold);display:block;margin-bottom:16px}
+.location h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;font-weight:300;color:var(--cream);
+  margin-bottom:32px;
+}
+.location-grid{
+  display:flex;justify-content:center;gap:64px;flex-wrap:wrap;
+  max-width:800px;margin:0 auto;
+}
+.loc-item h4{
+  font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.loc-item p{font-size:0.88rem;color:rgba(247,241,232,0.6);line-height:1.7;font-weight:300}
+.loc-item a{color:rgba(247,241,232,0.5);text-decoration:none;font-size:0.85rem}
+.loc-item a:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{
+  background:#0E0904;
+  padding:28px 56px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;letter-spacing:0.15em;color:var(--gold);
+}
+.footer-note{
+  font-size:0.7rem;color:rgba(247,241,232,0.25);text-align:right;
+}
+.footer-note strong{color:rgba(212,164,90,0.6)}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .about{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+  .about-img-accent{display:none}
+  .chat-inner{grid-template-columns:1fr;padding:0;gap:40px}
+  .chat-section{padding:60px 24px}
+  .menu-section{padding:60px 24px}
+  .hours-inner{flex-wrap:wrap}
+  .hours-item{min-width:50%;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .gallery{grid-template-columns:1fr 1fr;height:360px}
+  footer{flex-direction:column;text-align:center;padding:24px}
+  .footer-note{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-brand" href="#">SHOKO</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#chat">Reserve</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Brunch & Bar &nbsp;·&nbsp; Lachen SZ</span>
+    <h1>SHOKO</h1>
+    <p class="hero-sub">Hell &amp; Fröhlich &nbsp;—&nbsp; Bright &amp; Joyful</p>
+    <div class="hero-btns">
+      <a href="#chat" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-outline">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<div class="hours-ribbon">
+  <div class="hours-inner">
+    <div class="hours-item"><div class="hours-day">Monday</div><div class="hours-time">Closed</div></div>
+    <div class="hours-item"><div class="hours-day">Tue – Thu</div><div class="hours-time">09:00 – 17:00</div></div>
+    <div class="hours-item"><div class="hours-day">Fri – Sat</div><div class="hours-time">09:00 – 22:00</div></div>
+    <div class="hours-item"><div class="hours-day">Sunday</div><div class="hours-time">09:00 – 16:00</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img-wrap">
+    <img class="about-img"
+      src="https://static.wixstatic.com/media/af657f_64131577e5b54a34825f580ae869e605~mv2.jpg/v1/crop/x_0,y_430,w_2250,h_2140/fill/w_800,h_1000,al_c,q_85/IMG_6754_edited.jpg"
+      alt="Inside SHOKO"/>
+    <img class="about-img-accent"
+      src="https://static.wixstatic.com/media/af657f_c5a8395d509540478fcacf362e9320ae~mv2.png/v1/crop/x_313,y_1602,w_3439,h_3810/fill/w_445,h_390,al_c,q_85/IMG_4178_HEIC.png"
+      alt="SHOKO food"/>
+  </div>
+  <div class="about-text">
+    <span class="label">Our Story</span>
+    <h2>A place where moments <em>become memories</em></h2>
+    <div class="divider"></div>
+    <p>SHOKO means "bright and joyful" in Japanese — and that spirit flows through every detail of our space, from morning light to evening candlelight.</p>
+    <p>We created SHOKO as a place where you can share unforgettable moments with family, loved ones, and friends. Homemade cakes and pastries, specialty teas and coffees, handcrafted cocktails, and curated Apéro Boards — there is always something for every mood.</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <span class="label">What We Serve</span>
+  <h2>Brunch by day, <em>bar by night</em></h2>
+  <p class="menu-sub">Seasonal · Homemade · Made with love</p>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <span class="menu-card-num">01</span>
+      <h3>Pancakes & Waffles</h3>
+      <p>Sweet and savoury variations on Belgian waffles and fluffy pancakes — creative, generous, and made fresh.</p>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-num">02</span>
+      <h3>Brunch Classics</h3>
+      <p>English Breakfast, Shakshuka, Eggs Benedict, French Toast, and sourdough toasts crafted to perfection.</p>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-num">03</span>
+      <h3>Light & Wellness</h3>
+      <p>Caesar Salad, Acai Bowls, Salmon & Burrata — for when you want something lighter but just as satisfying.</p>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-num">04</span>
+      <h3>Cocktails & Bar</h3>
+      <p>Handcrafted cocktails, world gins, fine whiskeys, and seasonal specials. Apéro Boards for sharing.</p>
+    </div>
+  </div>
+  <div class="menu-btns">
+    <a href="https://www.shokobrunchbar.com/_files/ugd/af657f_6f1cb8cfedd3409da6ca11a3c0331389.pdf" target="_blank" class="menu-btn">Brunch Menu</a>
+    <a href="https://www.shokobrunchbar.com/_files/ugd/af657f_c603e9a9d06646849f5f415d700d270f.pdf" target="_blank" class="menu-btn">Bar Menu</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <div class="gallery-img"><img src="https://static.wixstatic.com/media/af657f_ee4b0f1be4524f53b401e24e8f75767b~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85/af657f_ee4b0f1be4524f53b401e24e8f75767b~mv2.jpg" alt="SHOKO food"/></div>
+  <div class="gallery-img"><img src="https://static.wixstatic.com/media/af657f_9728fc51cf744f4684e98c8176ff9de1~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85/af657f_9728fc51cf744f4684e98c8176ff9de1~mv2.jpg" alt="SHOKO bar"/></div>
+  <div class="gallery-img"><img src="https://static.wixstatic.com/media/af657f_64131577e5b54a34825f580ae869e605~mv2.jpg/v1/crop/x_0,y_430,w_2250,h_2140/fill/w_600,h_600,al_c,q_85/IMG_6754_edited.jpg" alt="SHOKO interior"/></div>
+  <div class="gallery-img"><img src="https://static.wixstatic.com/media/af657f_c5a8395d509540478fcacf362e9320ae~mv2.png/v1/crop/x_313,y_1602,w_3439,h_3810/fill/w_600,h_600,al_c,q_85/IMG_4178_HEIC.png" alt="SHOKO brunch"/></div>
+</div>
+
+<!-- CHAT -->
+<section class="chat-section" id="chat">
+  <div class="chat-inner">
+    <div class="chat-intro">
+      <span class="label">AI Assistant</span>
+      <h2>Reserve a table, <em>ask us anything</em></h2>
+      <p>Our AI assistant knows the menu, opening hours, and everything about SHOKO — and can take your reservation request in seconds, any time of day.</p>
+      <div class="chat-feature">
+        <div class="chat-feature-icon">🗓</div>
+        <div class="chat-feature-text">
+          <h4>Table reservations</h4>
+          <p>Chat to book — we collect your details and the team confirms by email.</p>
+        </div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature-icon">🕐</div>
+        <div class="chat-feature-text">
+          <h4>Always available</h4>
+          <p>Questions at midnight? The assistant is here 24 hours a day.</p>
+        </div>
+      </div>
+      <div class="chat-feature">
+        <div class="chat-feature-icon">☕</div>
+        <div class="chat-feature-text">
+          <h4>Menu & specials</h4>
+          <p>Ask about dishes, ingredients, or what's on the bar tonight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-widget">
+      <div class="chat-bar">
+        <div class="chat-bar-avatar">☕</div>
+        <div>
+          <div class="chat-bar-name">SHOKO Assistant</div>
+          <div class="chat-bar-status"><span class="dot"></span> Online now</div>
+        </div>
+        <div class="chat-badge">AI Powered</div>
+      </div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="msg bot">
+          <div class="msg-av">☕</div>
+          <div class="msg-bub">Hallo! 👋 Welcome to SHOKO. I can help with our menu, opening hours, or reserving a table. What can I do for you today?</div>
+        </div>
+      </div>
+      <div class="chat-chips" id="chips">
+        <button class="chip" onclick="suggest(this)">🗓 Book a table</button>
+        <button class="chip" onclick="suggest(this)">🕐 Opening hours</button>
+        <button class="chip" onclick="suggest(this)">🥞 What's on the menu?</button>
+        <button class="chip" onclick="suggest(this)">📍 Where are you?</button>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-inp" id="inp" placeholder="Ask anything about SHOKO…" onkeydown="if(event.key==='Enter')send()"/>
+        <button class="chat-send" id="sendBtn" onclick="send()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY 2 / LOCATION -->
+<section class="location" id="location">
+  <span class="label">Find Us</span>
+  <h2>Come visit SHOKO</h2>
+  <div class="location-grid">
+    <div class="loc-item">
+      <h4>Address</h4>
+      <p>St. Gallerstrasse 1<br/>8853 Lachen SZ<br/>Switzerland</p>
+    </div>
+    <div class="loc-item">
+      <h4>Opening Hours</h4>
+      <p>Tue – Thu &nbsp;09:00 – 17:00<br/>Fri – Sat &nbsp;&nbsp;09:00 – 22:00<br/>Sun &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09:00 – 16:00</p>
+    </div>
+    <div class="loc-item">
+      <h4>Contact</h4>
+      <p><a href="mailto:info@shokobrunchbar.com">info@shokobrunchbar.com</a></p>
+      <br/>
+      <p><a href="https://www.shokobrunchbar.com" target="_blank">www.shokobrunchbar.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">SHOKO</div>
+  <div class="footer-note">
+    AI chatbot powered by <strong>InnovateInDigital</strong> &nbsp;·&nbsp; innovateindigital.com<br/>
+    <span style="font-size:0.62rem;opacity:0.6">Private demonstration — not publicly indexed</span>
+  </div>
+</footer>
+
+<script>
+const WEBHOOK = 'https://iid1974.app.n8n.cloud/webhook/06b2b40f-7e07-4943-bba8-5cc86237f3b6';
+const msgs = document.getElementById('chatMsgs');
+const inp = document.getElementById('inp');
+const btn = document.getElementById('sendBtn');
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+
+function scroll(){msgs.scrollTop=msgs.scrollHeight}
+
+function addMsg(role,text){
+  const w=document.createElement('div');w.className='msg '+role;
+  const av=document.createElement('div');av.className='msg-av';
+  av.textContent=role==='bot'?'☕':'👤';
+  const b=document.createElement('div');b.className='msg-bub';b.textContent=text;
+  w.appendChild(av);w.appendChild(b);msgs.appendChild(w);scroll();
+}
+
+function showTyping(){
+  const w=document.createElement('div');w.className='msg bot';w.id='typing';
+  const av=document.createElement('div');av.className='msg-av';av.textContent='☕';
+  const b=document.createElement('div');b.className='typing-bub';
+  b.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+  w.appendChild(av);w.appendChild(b);msgs.appendChild(w);scroll();
+}
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove()}
+
+function hideChips(){document.getElementById('chips').style.display='none'}
+
+function suggest(el){
+  inp.value=el.textContent.replace(/^[^\w]+/,'').trim();
+  send();
+}
+
+async function send(){
+  const text=inp.value.trim();if(!text)return;
+  hideChips();
+  addMsg('user',text);
+  inp.value='';btn.disabled=true;
+  showTyping();
+  try{
+    const r=await fetch(WEBHOOK,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chatInput:text,sessionId:'shoko-'+Date.now()})
+    });
+    const d=await r.json();
+    hideTyping();
+    const reply=d?.output||d?.text||d?.message||d?.response||(Array.isArray(d)&&d[0]?.output)||'Sorry, something went wrong. Please email us at info@shokobrunchbar.com';
+    addMsg('bot',reply);
+  }catch(e){
+    hideTyping();
+    addMsg('bot','Sorry, I\'m having trouble connecting right now. Please email info@shokobrunchbar.com or call us directly.');
+  }finally{btn.disabled=false;inp.focus()}
+}
+</script>
+</body>
+</html>
