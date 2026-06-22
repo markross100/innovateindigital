@@ -3,10 +3,10 @@
     "events": "Events",
     "whoAttends": "Who Attends",
     "aboutMark": "About Mark",
-    "sponsors": "Sponsors",
+    "sponsors": "Partners",
     "applications": "Applications",
     "requestInvite": "Request Invitation",
-    "sponsorEnquiry": "Sponsor Enquiry"
+    "sponsorEnquiry": "Partners Enquiry"
   },
   "hero": {
     "eyebrow": "By Invitation Only · Senior Leaders · Zurich, Switzerland",
@@ -82,7 +82,7 @@
     "t3author": "— Senior Leader, Switzerland"
   },
   "mark": {
-    "label": "The Founder",
+    "label": "The Organiser",
     "name": "Mark Ross",
     "location": "Zurich, Switzerland",
     "bio": "I started this private network because I kept having the same conversation: brilliant people working on RPA, automation, and AI — but doing it in silos. No real space to share what's actually working, what isn't, and where things are heading. So I built one.",
@@ -105,7 +105,7 @@
     "button": "Request an Invitation"
   },
   "sponsors": {
-    "label": "For Sponsors & Partners",
+    "label": "Partners & Supporters",
     "headline1": "Your brand.",
     "headline2": "At the right table.",
     "sub": "InnovateInDigital offers a unique partnership model — direct access to senior AI and automation decision-makers in Switzerland. No cash fee. Just genuine partnership.",
@@ -113,9 +113,9 @@
     "perk2": "20-minute speaking platform — demo, case study, or Q&A",
     "perk3": "Brand positioning in a premium, trust-first private network",
     "perk4": "LinkedIn co-promotion pre- and post-event",
-    "boxTitle": "Interested in Sponsoring?",
-    "boxSub": "Request our Sponsor Information Pack — we'll send it directly and schedule a short conversation.",
-    "boxCta": "Request Sponsor Pack",
+    "boxTitle": "Interested in Partnering?",
+    "boxSub": "Request our Partners Information Pack — we'll send it directly and schedule a short conversation.",
+    "boxCta": "Request Partners Pack",
     "boxEmail": "mark.ross@innovateindigital.com"
   },
   "apps": {
@@ -139,7 +139,7 @@
     "events": "Events",
     "whoAttends": "Who Attends",
     "about": "About",
-    "sponsors": "Sponsors",
+    "sponsors": "Partners",
     "linkedin": "LinkedIn",
     "contact": "Contact",
     "copy": "© 2026 InnovateInDigital · Zurich, Switzerland",

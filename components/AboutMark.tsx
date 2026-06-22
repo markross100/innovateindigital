@@ -24,7 +24,7 @@ export default function AboutMark() {
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-20 items-center">
           <motion.div ref={photoRef} initial={{ opacity: 0, y: 28 }} animate={photoView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="relative">
             <div className="relative aspect-[4/5] w-full">
-              <Image src="/images/mark.jpg" alt="Mark Ross — Founder, InnovateInDigital" fill sizes="(max-width: 1024px) 100vw, 360px" className="object-cover object-top grayscale-[10%] contrast-[1.04]" priority />
+              <Image src="/images/mark.jpg" alt="Mark Ross — Organiser, InnovateInDigital" fill sizes="(max-width: 1024px) 100vw, 360px" className="object-cover object-top grayscale-[10%] contrast-[1.04]" priority />
             </div>
             <div className="frame-accent" />
           </motion.div>

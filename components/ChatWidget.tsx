@@ -13,7 +13,7 @@ const SUGGESTED_QUESTIONS = [
   "What is InnovateInDigital?",
   "How do I request an invitation?",
   "Who attends the roundtables?",
-  "How can my company sponsor?",
+  "How can my company partner?",
 ];
 
 export default function ChatWidget() {

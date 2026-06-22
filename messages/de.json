@@ -3,10 +3,10 @@
     "events": "Events",
     "whoAttends": "Teilnehmer",
     "aboutMark": "Über Mark",
-    "sponsors": "Sponsoren",
+    "sponsors": "Partner & Unterstützer",
     "applications": "Anwendungen",
     "requestInvite": "Einladung anfragen",
-    "sponsorEnquiry": "Sponsor-Anfrage"
+    "sponsorEnquiry": "Partner-Anfrage"
   },
   "hero": {
     "eyebrow": "Nur auf Einladung · Führungskräfte · Zürich, Schweiz",
@@ -82,7 +82,7 @@
     "t3author": "— Senior Leader, Schweiz"
   },
   "mark": {
-    "label": "Der Gründer",
+    "label": "Der Organisator",
     "name": "Mark Ross",
     "location": "Zürich, Schweiz",
     "bio": "Ich habe dieses private Netzwerk gegründet, weil ich immer wieder dasselbe Gespräch führte: brillante Menschen, die an RPA, Automatisierung und KI arbeiten — aber in Silos. Kein echter Raum, um zu teilen, was wirklich funktioniert, was nicht und wohin die Reise geht. Also habe ich einen geschaffen.",
@@ -105,7 +105,7 @@
     "button": "Einladung anfragen"
   },
   "sponsors": {
-    "label": "Für Sponsoren & Partner",
+    "label": "Partner & Unterstützer",
     "headline1": "Ihre Marke.",
     "headline2": "Am richtigen Tisch.",
     "sub": "InnovateInDigital bietet ein einzigartiges Partnerschaftsmodell — direkten Zugang zu leitenden KI- und Automatisierungsentscheidungsträgern in der Schweiz. Keine Gebühr. Nur echte Partnerschaft.",
@@ -113,9 +113,9 @@
     "perk2": "20-minütige Speaking-Plattform — Demo, Case Study oder Q&A",
     "perk3": "Markenpräsenz in einem premium, vertrauensorientierten privaten Netzwerk",
     "perk4": "LinkedIn Co-Promotion vor und nach dem Event",
-    "boxTitle": "Interesse an einer Sponsorschaft?",
-    "boxSub": "Fordern Sie unser Sponsor-Informationspaket an — wir senden es direkt und vereinbaren ein kurzes Gespräch.",
-    "boxCta": "Sponsor-Paket anfragen",
+    "boxTitle": "Interesse an einer Partnerschaft?",
+    "boxSub": "Fordern Sie unser Partner-Informationspaket an — wir senden es direkt und vereinbaren ein kurzes Gespräch.",
+    "boxCta": "Partner-Paket anfragen",
     "boxEmail": "mark.ross@innovateindigital.com"
   },
   "apps": {
@@ -139,7 +139,7 @@
     "events": "Events",
     "whoAttends": "Teilnehmer",
     "about": "Über uns",
-    "sponsors": "Sponsoren",
+    "sponsors": "Partner & Unterstützer",
     "linkedin": "LinkedIn",
     "contact": "Kontakt",
     "copy": "© 2026 InnovateInDigital · Zürich, Schweiz",

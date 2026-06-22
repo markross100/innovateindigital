@@ -33,8 +33,8 @@ innovateindigital/
 │   ├── Community.tsx     # Event format — 4 cards
 │   ├── Different.tsx     # What makes this different — 3 cols
 │   ├── Audience.tsx      # Who attends + organisations
-│   ├── AboutMark.tsx     # Founder bio + photo
-│   ├── Sponsors.tsx      # Sponsor CTA (gated pack)
+│   ├── AboutMark.tsx     # Organiser bio + photo
+│   ├── Partner.tsx      # Sponsor CTA (gated pack)
 │   ├── Apps.tsx          # Agentic applications teaser
 │   ├── CTA.tsx           # Final call to action
 │   └── Footer.tsx        # Footer with links
@@ -117,7 +117,7 @@ All content is in the component files. Key locations:
 | Event format cards | `components/Community.tsx` → `cards` array |
 | Organisation logos | `components/Audience.tsx` → `orgs` array |
 | Mark's bio | `components/AboutMark.tsx` |
-| Sponsor perks list | `components/Sponsors.tsx` → `perks` array |
+| Partner perks list | `components/Sponsors.tsx` → `perks` array |
 | App names/badges | `components/Apps.tsx` → `badges` array |
 | Photos | Replace files in `public/images/` |
 | Brand colours | `tailwind.config.ts` → `theme.extend.colors` |
@@ -157,7 +157,7 @@ const photos = [
 
 ## Contact
 
-**Mark Ross** — Founder, InnovateInDigital  
+**Mark Ross** — Organiser, InnovateInDigital  
 mark.ross@innovateindigital.com  
 [linkedin.com/in/markrossch](https://www.linkedin.com/in/markrossch/)  
 Zurich, Switzerland
