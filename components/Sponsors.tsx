@@ -8,7 +8,7 @@ export default function Sponsors() {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
 
-  const perks = [t('perk1'), t('perk2'), t('perk3'), t('perk4'), t('perk5')]
+  const perks = [t('perk1'), t('perk2'), t('perk3'), t('perk4')]
 
   return (
     <section id="sponsors" className="py-28">
