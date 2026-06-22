@@ -35,6 +35,9 @@ export default function Footer() {
       <p className="text-muted text-[0.75rem]">
         {t('copy').replace('{year}', String(year))}
       </p>
+      <p className="text-muted text-[0.7rem] opacity-50 mt-1 w-full text-center">
+        Personal project · Not a registered business · No revenue generated
+      </p>
     </footer>
   )
 }
