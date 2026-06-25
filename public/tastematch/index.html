@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TasteMatch Zürich</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0F0E0D;
+  color: #F7F3EE;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.particles {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.particle {
+  position: absolute; opacity: 0;
+  animation: floatUp linear infinite;
+  filter: blur(0.5px);
+}
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+  10%  { opacity: 0.18; }
+  80%  { opacity: 0.12; }
+  100% { opacity: 0; transform: translateY(-110vh) scale(1.1) rotate(25deg); }
+}
+
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,14,13,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(247,243,238,0.07);
+  padding: 0 32px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 900;
+  letter-spacing: -0.5px; color: #F7F3EE;
+}
+.logo span { color: #F5A623; }
+.header-city {
+  font-size: 0.78rem; color: rgba(247,243,238,0.4);
+  display: flex; align-items: center; gap: 6px;
+}
+.dot-live {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4CAF7D; animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(76,175,125,0.5); }
+  50%      { box-shadow: 0 0 0 5px rgba(76,175,125,0); }
+}
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+#landing-screen {
+  display: none; min-height: calc(100vh - 64px);
+  align-items: center; justify-content: center;
+  flex-direction: column; text-align: center;
+  padding: 60px 24px; position: relative; z-index: 1;
+}
+#landing-screen.active { display: flex; }
+
+.hero-eyebrow {
+  font-size: 0.72rem; letter-spacing: 3.5px;
+  text-transform: uppercase; color: #F5A623;
+  margin-bottom: 22px; font-weight: 500;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 900; line-height: 1.05;
+  max-width: 700px; margin-bottom: 24px; color: #F7F3EE;
+}
+.hero-title em { font-style: italic; color: #F5A623; }
+.hero-sub {
+  font-size: 1.05rem; color: rgba(247,243,238,0.55);
+  max-width: 420px; line-height: 1.7;
+  margin-bottom: 44px; font-weight: 300;
+}
+.btn-start {
+  background: #F5A623; color: #0F0E0D;
+  border: none; border-radius: 50px;
+  padding: 17px 42px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-start::after {
+  content: ''; position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s ease infinite;
+}
+@keyframes shimmer { 0% { left: -100%; } 60%,100% { left: 160%; } }
+.btn-start:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(245,166,35,0.35);
+}
+.hero-badges {
+  display: flex; gap: 12px; justify-content: center;
+  flex-wrap: wrap; margin-top: 32px;
+}
+.hero-badge {
+  background: rgba(247,243,238,0.06);
+  border: 1px solid rgba(247,243,238,0.1);
+  border-radius: 50px; padding: 8px 18px;
+  font-size: 0.8rem; color: rgba(247,243,238,0.5);
+}
+
+#quiz-screen {
+  display: none; min-height: calc(100vh - 64px);
+  align-items: center; justify-content: center;
+  flex-direction: column; padding: 40px 24px;
+  position: relative; z-index: 1;
+}
+#quiz-screen.active { display: flex; }
+
+.quiz-progress { display: flex; gap: 10px; margin-bottom: 44px; }
+.q-dot {
+  width: 40px; height: 3px;
+  background: rgba(247,243,238,0.12); border-radius: 2px;
+  transition: background 0.4s;
+}
+.q-dot.done    { background: #F5A623; }
+.q-dot.current { background: rgba(245,166,35,0.45); }
+
+.quiz-label {
+  font-size: 0.72rem; letter-spacing: 3px;
+  text-transform: uppercase; color: #F5A623;
+  margin-bottom: 14px; font-weight: 500;
+}
+.quiz-q {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
+  text-align: center; max-width: 480px;
+  margin-bottom: 40px; line-height: 1.2;
+}
+.options-wrap {
+  display: flex; flex-direction: column; gap: 14px;
+  width: 100%; max-width: 460px;
+  animation: slideInRight 0.35s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.opt {
+  background: #1C1A18;
+  border: 1.5px solid rgba(247,243,238,0.08);
+  border-radius: 16px; padding: 20px 24px; cursor: pointer;
+  display: flex; align-items: center; gap: 18px;
+  font-size: 1rem; font-weight: 500; color: #F7F3EE;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.opt:hover {
+  border-color: rgba(245,166,35,0.5);
+  transform: translateX(6px); background: #221F1C;
+}
+.opt.selected {
+  border-color: #F5A623; background: #221F1C;
+  animation: selectedPulse 0.4s ease;
+}
+@keyframes selectedPulse {
+  0%  { box-shadow: 0 0 0 0 rgba(245,166,35,0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(245,166,35,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(245,166,35,0); }
+}
+.opt-emoji { font-size: 1.8rem; flex-shrink: 0; }
+.opt-check {
+  margin-left: auto; width: 22px; height: 22px;
+  border-radius: 50%; border: 1.5px solid rgba(247,243,238,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.2s;
+}
+.opt.selected .opt-check { background: #F5A623; border-color: #F5A623; }
+.opt-check svg { display: none; }
+.opt.selected .opt-check svg { display: block; }
+
+#loading-screen {
+  display: none; min-height: calc(100vh - 64px);
+  align-items: center; justify-content: center;
+  flex-direction: column; z-index: 1; position: relative;
+}
+#loading-screen.active { display: flex; }
+
+.loading-ring {
+  width: 80px; height: 80px;
+  border: 3px solid rgba(247,243,238,0.08);
+  border-top-color: #F5A623; border-radius: 50%;
+  animation: spin 0.9s linear infinite; margin-bottom: 24px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; color: rgba(247,243,238,0.7);
+}
+.loading-sub {
+  font-size: 0.82rem; color: rgba(247,243,238,0.3); margin-top: 8px;
+}
+
+#results-screen {
+  display: none; padding: 36px 24px 60px;
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+}
+#results-screen.active { display: block; }
+
+.results-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 6px; flex-wrap: wrap; gap: 16px;
+}
+.results-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 700;
+}
+.restart-btn {
+  background: none;
+  border: 1px solid rgba(247,243,238,0.15);
+  border-radius: 50px; padding: 9px 20px;
+  color: rgba(247,243,238,0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; cursor: pointer;
+  display: flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+}
+.restart-btn:hover { border-color: rgba(247,243,238,0.35); color: #F7F3EE; }
+.results-meta {
+  font-size: 0.82rem; color: rgba(247,243,238,0.35); margin-bottom: 28px;
+}
+
+.r-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.r-card {
+  background: #1C1A18;
+  border: 1px solid rgba(247,243,238,0.07);
+  border-radius: 20px; overflow: hidden;
+  opacity: 0; transform: translateY(28px);
+  animation: cardIn 0.5s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  transition: border-color 0.2s, transform 0.25s;
+}
+.r-card:hover {
+  border-color: rgba(245,166,35,0.25);
+  transform: translateY(-4px) !important;
+}
+@keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+
+.r-card-hero {
+  height: 170px; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 4rem; position: relative; overflow: hidden;
+}
+.r-card-hero-inner {
+  animation: ambientZoom 8s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes ambientZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.15) rotate(4deg); }
+}
+.match-pill {
+  position: absolute; top: 14px; right: 14px;
+  border-radius: 50px; padding: 5px 13px;
+  font-size: 0.72rem; font-weight: 600;
+  display: flex; align-items: center; gap: 5px;
+}
+.match-pill.high { background: rgba(76,175,125,0.2); color: #4CAF7D; border: 1px solid rgba(76,175,125,0.3); }
+.match-pill.mid  { background: rgba(245,166,35,0.2); color: #F5A623; border: 1px solid rgba(245,166,35,0.3); }
+.match-pill.low  { background: rgba(247,243,238,0.07); color: rgba(247,243,238,0.45); border: 1px solid rgba(247,243,238,0.1); }
+
+.r-card-body { padding: 20px 22px 22px; }
+.r-card-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 4px;
+}
+.r-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700; color: #F7F3EE;
+}
+.r-price { font-size: 0.82rem; color: rgba(247,243,238,0.35); }
+.r-cuisine { font-size: 0.8rem; color: rgba(247,243,238,0.4); margin-bottom: 12px; }
+.r-neighbourhood {
+  font-size: 0.72rem;
+  background: rgba(245,166,35,0.1); color: #F5A623;
+  border-radius: 50px; padding: 3px 10px;
+  display: inline-block; margin-bottom: 14px; font-weight: 500;
+}
+
+.dial-wrap {
+  margin: 6px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.dial-label {
+  font-size: 0.72rem; color: rgba(247,243,238,0.35);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.dial-reason {
+  font-size: 0.82rem; color: rgba(247,243,238,0.6);
+  line-height: 1.5; margin-top: 2px;
+}
+
+.r-sep { height: 1px; background: rgba(247,243,238,0.06); margin: 16px 0; }
+
+.r-delivery { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.r-info-chip {
+  background: rgba(247,243,238,0.04);
+  border: 1px solid rgba(247,243,238,0.07);
+  border-radius: 10px; padding: 8px 12px;
+  flex: 1; min-width: 80px;
+}
+.r-info-chip-label {
+  font-size: 0.65rem; color: rgba(247,243,238,0.3);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+}
+.r-info-chip-val { font-size: 0.9rem; font-weight: 600; color: #F7F3EE; }
+
+.r-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-btn {
+  flex: 1; min-width: 120px; border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  position: relative; overflow: hidden;
+}
+.cta-btn::after {
+  content: ''; position: absolute;
+  top: 0; left: -100%; width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+}
+.cta-btn:hover::after { animation: shimmerBtn 0.6s ease; }
+@keyframes shimmerBtn { from { left: -100%; } to { left: 160%; } }
+.cta-btn:hover { transform: translateY(-2px); }
+.cta-primary { background: #F5A623; color: #0F0E0D; border: none; }
+.cta-primary:hover { box-shadow: 0 8px 24px rgba(245,166,35,0.35); }
+.cta-secondary { background: transparent; color: #F7F3EE; border: 1px solid rgba(247,243,238,0.15); }
+.cta-secondary:hover { border-color: rgba(247,243,238,0.35); }
+.cta-dine-only {
+  background: rgba(76,175,125,0.1); color: #4CAF7D;
+  border: 1px solid rgba(76,175,125,0.2); width: 100%;
+}
+
+.error-box {
+  background: rgba(255,80,60,0.08);
+  border: 1px solid rgba(255,80,60,0.2);
+  border-radius: 14px; padding: 20px 24px;
+  color: rgba(247,243,238,0.7); font-size: 0.9rem;
+  line-height: 1.6; margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .r-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<header>
+  <div class="logo">Taste<span>Match</span></div>
+  <div class="header-city">
+    <span class="dot-live"></span>
+    Zürich · CHF · Powered by AI
+  </div>
+</header>
+
+<div class="screen active" id="landing-screen">
+  <div class="hero-eyebrow">Zürich's Smartest Food Discovery</div>
+  <h1 class="hero-title">Find your <em>perfect</em> match in three questions.</h1>
+  <p class="hero-sub">Tell us your vibe, your craving, and your budget. Our AI finds the right Zürich spot — with real booking and delivery links.</p>
+  <button class="btn-start" onclick="startQuiz()">Start Taste Match &rarr;</button>
+  <div class="hero-badges">
+    <span class="hero-badge">🍽 Dine-in booking</span>
+    <span class="hero-badge">📦 Delivery links</span>
+    <span class="hero-badge">🤖 AI-matched</span>
+    <span class="hero-badge">🇨🇭 Zürich only</span>
+  </div>
+</div>
+
+<div class="screen" id="quiz-screen">
+  <div class="quiz-progress" id="quiz-progress"></div>
+  <div class="quiz-label" id="quiz-label">Step 1 of 3</div>
+  <h2 class="quiz-q" id="quiz-q"></h2>
+  <div class="options-wrap" id="options-wrap"></div>
+</div>
+
+<div class="screen" id="loading-screen">
+  <div class="loading-ring"></div>
+  <div class="loading-text">Finding your matches…</div>
+  <div class="loading-sub" id="loading-sub">Scanning Zürich restaurants</div>
+</div>
+
+<div class="screen" id="results-screen">
+  <div class="results-top">
+    <div>
+      <h2 class="results-title" id="results-title">Your Matches</h2>
+      <div class="results-meta" id="results-meta"></div>
+    </div>
+    <button class="restart-btn" onclick="restart()">↺ New search</button>
+  </div>
+  <div class="r-grid" id="r-grid"></div>
+</div>
+
+<script>
+const EMOJIS = ['🍜','🍕','🥗','🍣','🥩','🧀','🍷','🥐','🌶️','🥂','🫕','🍱'];
+const pEl = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('span');
+  p.className = 'particle';
+  p.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+  p.style.cssText = `left:${Math.random()*100}vw;font-size:${1.2+Math.random()*1.4}rem;animation-duration:${12+Math.random()*20}s;animation-delay:${Math.random()*18}s`;
+  pEl.appendChild(p);
+}
+
+const QUIZ = [
+  {
+    label: 'Step 1 of 3', q: "What's the mood today?", key: 'vibe',
+    opts: [
+      { e: '🎧', text: 'Industrial & Trendy' },
+      { e: '🪵', text: 'Cozy & Traditional' },
+      { e: '⚡', text: 'Quick & Casual' }
+    ]
+  },
+  {
+    label: 'Step 2 of 3', q: "What are you craving?", key: 'food',
+    opts: [
+      { e: '🇨🇭', text: 'Local Comfort — Züri classics' },
+      { e: '🌶️', text: 'Spicy & Global — Curry, Tacos, Asian' },
+      { e: '🌱', text: 'Fresh & Green — Bowls, Sushi, Vegan' }
+    ]
+  },
+  {
+    label: 'Step 3 of 3', q: "What's your wallet saying?", key: 'budget',
+    opts: [
+      { e: '🪙', text: 'Budget — under CHF 20' },
+      { e: '💸', text: 'Mid-tier — CHF 20–40' },
+      { e: '💎', text: 'Premium — CHF 40+' }
+    ]
+  }
+];
+
+let step = 0, answers = {};
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startQuiz() { step = 0; answers = {}; showScreen('quiz-screen'); renderStep(); }
+
+function renderStep() {
+  const q = QUIZ[step];
+  document.getElementById('quiz-label').textContent = q.label;
+  document.getElementById('quiz-q').textContent = q.q;
+  const prog = document.getElementById('quiz-progress');
+  prog.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const d = document.createElement('div');
+    d.className = 'q-dot' + (i < step ? ' done' : i === step ? ' current' : '');
+    prog.appendChild(d);
+  }
+  const wrap = document.getElementById('options-wrap');
+  wrap.style.animation = 'none'; void wrap.offsetWidth; wrap.style.animation = '';
+  wrap.innerHTML = '';
+  q.opts.forEach(opt => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `<span class="opt-emoji">${opt.e}</span><span>${opt.text}</span>
+      <span class="opt-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2 6l3 3 5-5" stroke="#0F0E0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></span>`;
+    div.onclick = () => pick(q.key, opt.text, div);
+    wrap.appendChild(div);
+  });
+}
+
+function pick(key, val, el) {
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[key] = val;
+  setTimeout(() => { step++; step < QUIZ.length ? renderStep() : fetchResults(); }, 380);
+}
+
+const loadingMsgs = [
+  'Scanning Zürich neighbourhoods…',
+  'Matching your vibe to local spots…',
+  'Checking delivery windows…',
+  'Curating your personal shortlist…'
+];
+let loadIdx = 0, loadTimer;
+
+function startLoadingCycle() {
+  loadIdx = 0;
+  document.getElementById('loading-sub').textContent = loadingMsgs[0];
+  loadTimer = setInterval(() => {
+    loadIdx = (loadIdx + 1) % loadingMsgs.length;
+    document.getElementById('loading-sub').textContent = loadingMsgs[loadIdx];
+  }, 1800);
+}
+function stopLoadingCycle() { clearInterval(loadTimer); }
+
+async function fetchResults() {
+  showScreen('loading-screen');
+  startLoadingCycle();
+
+  const prompt = `You are a Zürich food discovery engine. Based on these preferences, return 4 Zürich restaurant recommendations as a JSON array. Only respond with the raw JSON array — no markdown, no explanation, no backticks.
+
+User preferences:
+- Vibe: ${answers.vibe}
+- Craving: ${answers.food}
+- Budget: ${answers.budget}
+
+Each object must have exactly these fields:
+{
+  "name": "restaurant name",
+  "cuisine": "e.g. Thai · Fusion",
+  "neighbourhood": "e.g. Langstrasse",
+  "emoji": "one relevant food emoji",
+  "bgColor": "a dark warm hex e.g. #1E1208",
+  "priceRange": "e.g. CHF 18–28",
+  "deliveryTime": "e.g. 25 min" or null,
+  "deliveryFee": "e.g. CHF 3.90" or null,
+  "dineInOnly": true or false,
+  "matchScore": number 60–99,
+  "matchReason": "one short sentence explaining the match",
+  "bookingUrl": "https://www.thefork.ch/restaurant/zurich" or a plausible TheFork Zürich search URL,
+  "orderUrl": "https://www.lieferando.ch/en/menu/" or null if dine-in only
+}
+
+Use real Zürich neighbourhoods: Langstrasse, Niederdorf, Bellevue, Hürlimann Areal, Zürichberg, Kreis 4, Seefeld, Wiedikon. Make names sound authentic and local.`;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content?.[0]?.text || '';
+    let restaurants;
+    try {
+      restaurants = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    } catch(e) {
+      throw new Error('Could not parse restaurant data. Please try again.');
+    }
+    stopLoadingCycle();
+    renderResults(restaurants);
+  } catch(err) {
+    stopLoadingCycle();
+    renderError(err.message);
+  }
+}
+
+function buildDial(score) {
+  const r = 28, cx = 34, cy = 34;
+  const circ = 2 * Math.PI * r;
+  const arc = (score / 100) * circ * 0.75;
+  const offset = circ * 0.25 / 2;
+  const color = score >= 85 ? '#4CAF7D' : score >= 65 ? '#F5A623' : 'rgba(247,243,238,0.3)';
+  const uid = 'dial-' + Math.random().toString(36).slice(2);
+  setTimeout(() => {
+    const el = document.getElementById(uid);
+    if (el) el.setAttribute('stroke-dasharray', `${arc} ${circ - arc}`);
+  }, 300);
+  return `<svg width="68" height="68" viewBox="0 0 68 68" style="flex-shrink:0">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(247,243,238,0.07)" stroke-width="5"
+      stroke-dasharray="${circ*0.75} ${circ*0.25}" stroke-dashoffset="-${offset}" stroke-linecap="round"/>
+    <circle id="${uid}" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="5"
+      stroke-dasharray="0 ${circ}" stroke-dashoffset="-${offset}" stroke-linecap="round"
+      style="transition:stroke-dasharray 1.2s cubic-bezier(0.25,0.46,0.45,0.94)"/>
+    <text x="${cx}" y="${cy+2}" text-anchor="middle" dominant-baseline="middle"
+      fill="${color}" font-family="DM Sans,sans-serif" font-size="12" font-weight="600">${score}%</text>
+  </svg>`;
+}
+
+function renderResults(restaurants) {
+  showScreen('results-screen');
+  document.getElementById('results-title').textContent =
+    answers.vibe + ' · ' + answers.food.split('—')[0].trim();
+  document.getElementById('results-meta').textContent =
+    restaurants.length + ' AI-matched restaurants found in Zürich';
+
+  const grid = document.getElementById('r-grid');
+  grid.innerHTML = '';
+
+  restaurants.forEach((r, i) => {
+    const score = parseInt(r.matchScore) || 75;
+    const pillClass = score >= 85 ? 'high' : score >= 65 ? 'mid' : 'low';
+    const pillLabel = score >= 85 ? '✦ Top match' : score >= 65 ? 'Good match' : 'Possible match';
+
+    const deliveryBlock = (!r.dineInOnly && r.deliveryTime) ? `
+      <div class="r-delivery">
+        <div class="r-info-chip"><div class="r-info-chip-label">Delivery</div><div class="r-info-chip-val">${r.deliveryFee || 'Free'}</div></div>
+        <div class="r-info-chip"><div class="r-info-chip-label">Time</div><div class="r-info-chip-val">${r.deliveryTime}</div></div>
+        <div class="r-info-chip"><div class="r-info-chip-label">Price range</div><div class="r-info-chip-val">${r.priceRange || '—'}</div></div>
+      </div>` : `
+      <div class="r-delivery">
+        <div class="r-info-chip" style="flex:none"><div class="r-info-chip-label">Experience</div><div class="r-info-chip-val" style="color:#4CAF7D">Dine-in only</div></div>
+        <div class="r-info-chip"><div class="r-info-chip-label">Price range</div><div class="r-info-chip-val">${r.priceRange || '—'}</div></div>
+      </div>`;
+
+    const ctaBlock = r.dineInOnly ? `
+      <div class="r-ctas">
+        <a class="cta-btn cta-dine-only" href="${r.bookingUrl || 'https://www.thefork.ch/search?cityName=zurich'}" target="_blank">🗓 Reserve a Table</a>
+      </div>` : `
+      <div class="r-ctas">
+        ${r.orderUrl ? `<a class="cta-btn cta-primary" href="${r.orderUrl}" target="_blank">📦 Order Delivery</a>` : ''}
+        ${r.bookingUrl ? `<a class="cta-btn cta-secondary" href="${r.bookingUrl}" target="_blank">🗓 Book Table</a>` : ''}
+      </div>`;
+
+    const card = document.createElement('div');
+    card.className = 'r-card';
+    card.style.animationDelay = (i * 0.12) + 's';
+    card.innerHTML = `
+      <div class="r-card-hero" style="background:${r.bgColor || '#1E1A14'}">
+        <div class="r-card-hero-inner">${r.emoji || '🍽'}</div>
+        <div class="match-pill ${pillClass}">${pillLabel}</div>
+      </div>
+      <div class="r-card-body">
+        <div class="r-card-head">
+          <div class="r-name">${r.name}</div>
+          <div class="r-price">${r.priceRange || ''}</div>
+        </div>
+        <div class="r-cuisine">${r.cuisine}</div>
+        <div class="r-neighbourhood">📍 ${r.neighbourhood}</div>
+        <div class="dial-wrap">
+          ${buildDial(score)}
+          <div>
+            <div class="dial-label">Match Score</div>
+            <div class="dial-reason">${r.matchReason || ''}</div>
+          </div>
+        </div>
+        <div class="r-sep"></div>
+        ${deliveryBlock}
+        ${ctaBlock}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderError(msg) {
+  showScreen('results-screen');
+  document.getElementById('results-title').textContent = 'Something went wrong';
+  document.getElementById('results-meta').textContent = '';
+  document.getElementById('r-grid').innerHTML = `
+    <div class="error-box" style="grid-column:1/-1">
+      <strong>Couldn't load results.</strong><br>${msg}<br><br>
+      <button onclick="restart()" style="background:#F5A623;color:#0F0E0D;border:none;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;">Try again</button>
+    </div>`;
+}
+
+function restart() { showScreen('landing-screen'); step = 0; answers = {}; }
+</script>
+</body>
+</html>
