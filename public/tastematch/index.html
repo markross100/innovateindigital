@@ -549,7 +549,7 @@ Each object must have exactly these fields:
 Use real Zürich neighbourhoods: Langstrasse, Niederdorf, Bellevue, Hürlimann Areal, Zürichberg, Kreis 4, Seefeld, Wiedikon. Make names sound authentic and local.`;
 
   try {
-    const res = await fetch('/api/chat', {
+    const res = await fetch('/api/tastematch', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
