@@ -562,9 +562,12 @@ Use real Zürich neighbourhoods: Langstrasse, Niederdorf, Bellevue, Hürlimann A
     const raw = data.content?.[0]?.text || '';
     let restaurants;
     try {
-      restaurants = JSON.parse(raw.replace(/```json|```/g, '').trim());
+      const clean = raw.replace(/```json|```/g, '').trim();
+      const match = clean.match(/\[[\s\S]*\]/);
+      if (!match) throw new Error('No array found');
+      restaurants = JSON.parse(match[0]);
     } catch(e) {
-      throw new Error('Could not parse restaurant data. Please try again.');
+      throw new Error('Could not parse restaurant data: ' + raw.slice(0, 200));
     }
     stopLoadingCycle();
     renderResults(restaurants);
