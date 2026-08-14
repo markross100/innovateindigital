@@ -18,10 +18,12 @@ export default function MemberCTA() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[640px]"
         >
-          <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-          <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
-            {t('headline')}
-          </h2>
+          <div className={`sec-head ${inView ? 'in' : ''}`}>
+            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+            <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
+              {t('headline')}
+            </h2>
+          </div>
           <p className="text-muted mt-4 max-w-[500px] leading-[1.78]">{t('sub')}</p>
           <div className="mt-8">
             <a

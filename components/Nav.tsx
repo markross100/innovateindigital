@@ -19,8 +19,9 @@ export default function Nav() {
     { href: '#audience',  label: t('whoAttends') },
     { href: '#mark',      label: t('aboutMark') },
     { href: '#sponsors',  label: t('sponsors') },
-    { href: '#apps',      label: t('applications') },
   ]
+
+  const labLink = { href: '/lab', label: t('lab') }
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-[1.1rem] border-b border-white/[0.06] backdrop-blur-2xl transition-all duration-300 ${scrolled ? 'bg-bg/[0.92]' : 'bg-bg/50'}`}>
@@ -36,6 +37,9 @@ export default function Nav() {
             <a href={href} className="text-muted text-[0.85rem] tracking-[0.02em] no-underline hover:text-ink transition-colors duration-200">{label}</a>
           </li>
         ))}
+        <li>
+          <Link href="/lab" className="text-muted text-[0.85rem] tracking-[0.02em] no-underline hover:text-ink transition-colors duration-200">{labLink.label}</Link>
+        </li>
       </ul>
 
       <div className="flex items-center gap-3">

@@ -20,10 +20,12 @@ export default function EventFormat() {
     <section id="format" className="py-28">
       <div className="container mx-auto px-[5vw]">
         <motion.div ref={ref} initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="mb-14">
-          <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-          <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
-            {t('headline1')}<br />{t('headline2')}
-          </h2>
+          <div className={`sec-head ${inView ? 'in' : ''}`}>
+            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+            <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
+              {t('headline1')}<br />{t('headline2')}
+            </h2>
+          </div>
         </motion.div>
 
         <div className="max-w-[720px]">
