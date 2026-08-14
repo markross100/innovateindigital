@@ -1,15 +1,17 @@
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Footer() {
-  const t = useTranslations('footer')
-  const year = new Date().getFullYear()
+ const t = useTranslations('footer') 
+   const locale = useLocale() 
+     const homeHref = locale === 'de' ? '/de' : '/' 
+       const year = new Date().getFullYear()
 
-  const links = [
-    { href: '#community',                                   label: t('events') },
-    { href: '#audience',                                    label: t('whoAttends') },
-    { href: '#mark',                                        label: t('about') },
-    { href: '#sponsors',                                    label: t('sponsors') },
+    const links = [
+    { href: `${homeHref}#community`, label: t('events') },
+    { href: `${homeHref}#audience`,  label: t('whoAttends') },
+    { href: `${homeHref}#mark`,      label: t('about') },
+    { href: `${homeHref}#sponsors`,  label: t('sponsors') },
     { href: 'https://www.linkedin.com/in/markrossch/',      label: t('linkedin'), external: true },
     { href: 'mailto:mark.ross@innovateindigital.com', label: t('contact') },
     { href: '/privacy',                                label: t('privacy') },
