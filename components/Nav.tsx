@@ -7,6 +7,7 @@ export default function Nav() {
   const t      = useTranslations('nav')
   const locale = useLocale()
   const [scrolled, setScrolled] = useState(false)
+  const homeHref = locale === 'de' ? '/de' : '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -15,10 +16,10 @@ export default function Nav() {
   }, [])
 
   const links = [
-    { href: '#format',    label: t('events') },
-    { href: '#audience',  label: t('whoAttends') },
-    { href: '#mark',      label: t('aboutMark') },
-    { href: '#sponsors',  label: t('sponsors') },
+{ href: `${homeHref}#format`,   label: t('events') },
+{ href: `${homeHref}#audience`, label: t('whoAttends') },
+{ href: `${homeHref}#mark`,     label: t('aboutMark') },
+{ href: `${homeHref}#sponsors`, label: t('sponsors') },
   ]
 
   const labLink = { href: '/lab', label: t('lab') }
