@@ -20,10 +20,12 @@ export default function Audience() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           <motion.div ref={leftRef} initial={{ opacity: 0, y: 28 }} animate={leftView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-            <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
-              {t('headline')}
-            </h2>
+            <div className={`sec-head ${leftView ? 'in' : ''}`}>
+              <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+              <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
+                {t('headline')}
+              </h2>
+            </div>
             <p className="text-muted mt-4 leading-[1.78] font-medium" style={{ color: '#9A9AAA' }}>{t('opening')}</p>
             <p className="text-muted mt-3 leading-[1.78]">{t('sub')}</p>
             <ul className="mt-8 flex flex-col gap-[0.9rem]">

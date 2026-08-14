@@ -9,7 +9,7 @@ import Testimonials   from '@/components/Testimonials'
 import AboutMark      from '@/components/AboutMark'
 import MemberCTA      from '@/components/MemberCTA'
 import Sponsors       from '@/components/Sponsors'
-import Apps           from '@/components/Apps'
+import LabTeaser      from '@/components/LabTeaser'
 import CTA            from '@/components/CTA'
 import Footer         from '@/components/Footer'
 
@@ -32,7 +32,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       <AboutMark />
       <MemberCTA />
       <Sponsors />
-      <Apps />
+      <LabTeaser />
       <CTA />
       <Footer />
     </main>

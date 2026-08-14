@@ -17,10 +17,12 @@ export default function Sponsors() {
           className="relative bg-gradient-to-br from-bg2 to-bg3 border border-gold/[0.22] rounded-[2px] p-14 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-12 items-center overflow-hidden">
           <div className="sponsor-glow" />
           <div className="relative z-10">
-            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-            <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.12 }}>
-              {t('headline1')}<br />{t('headline2')}
-            </h2>
+            <div className={`sec-head ${inView ? 'in' : ''}`}>
+              <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+              <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.12 }}>
+                {t('headline1')}<br />{t('headline2')}
+              </h2>
+            </div>
             <p className="text-muted mt-4 max-w-[500px] leading-[1.78]">{t('sub')}</p>
             <div className="mt-8 flex flex-col gap-3">
               {perks.map((p) => (

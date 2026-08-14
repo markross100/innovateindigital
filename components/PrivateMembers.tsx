@@ -19,10 +19,12 @@ export default function PrivateMembers() {
     <section id="members" className="py-28 bg-bg2">
       <div className="container mx-auto px-[5vw]">
         <motion.div ref={ref} initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="mb-14">
-          <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-          <h2 className="font-display font-semibold text-ink mt-3 max-w-[560px]" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
-            {t('headline')}
-          </h2>
+          <div className={`sec-head ${inView ? 'in' : ''}`}>
+            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+            <h2 className="font-display font-semibold text-ink mt-3 max-w-[560px]" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>
+              {t('headline')}
+            </h2>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

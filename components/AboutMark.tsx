@@ -29,8 +29,10 @@ export default function AboutMark() {
             <div className="frame-accent" />
           </motion.div>
           <motion.div ref={textRef} initial={{ opacity: 0, y: 28 }} animate={textView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
-            <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>{t('name')}</h2>
+            <div className={`sec-head ${textView ? 'in' : ''}`}>
+              <span className="text-gold text-[0.7rem] font-semibold tracking-[0.2em] uppercase">{t('label')}</span>
+              <h2 className="font-display font-semibold text-ink mt-3" style={{ fontSize: 'clamp(1.9rem, 3.8vw, 3rem)', lineHeight: 1.12 }}>{t('name')}</h2>
+            </div>
             <div className="inline-flex items-center gap-2 mt-4 mb-5 px-4 py-[0.38rem] border border-gold/[0.22] rounded-[2px] text-[0.68rem] text-muted tracking-[0.1em] uppercase">
               📍 {t('location')}
             </div>
